@@ -14,8 +14,8 @@ def all(db : Session = Depends(get_db)):
 
 
 @router.post("/long", status_code=status.HTTP_200_OK)
-def long_link( short_link: link_schema.ShortLink ,db : Session = Depends(get_db)):
-    return get_long_link(short_link, db)
+def long_link( short_link: link_schema.ShortLink):
+    return get_long_link(short_link)
 
 
 @router.post("/encode", status_code=status.HTTP_201_CREATED)

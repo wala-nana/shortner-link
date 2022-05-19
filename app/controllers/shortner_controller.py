@@ -33,12 +33,10 @@ def get_long_link(short_link, db : Session):
         # By decode the url:
         type_tiny = pyshorteners.Shortener()
         original_url = type_tiny.tinyurl.expand(short_link.link_url)
-
+        # print(original_url,"original_url original_url")
         return {"The original url is: ": original_url}
 
-
         # By get from Database:
-
         # original_url = db.query(link_model.Link).filter(link_model.Link.link_shortcut==short_link.link_url).first()
         # if not original_url:
         #     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Item with url {short_link} is not Available")
