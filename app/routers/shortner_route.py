@@ -13,11 +13,12 @@ def all(db : Session = Depends(get_db)):
     return show_all(db)
 
 
-@router.post("/long", status_code=status.HTTP_200_OK)
-def long_link( short_link: link_schema.ShortLink):
-    return get_long_link(short_link)
-
-
+# To shortcut link:
 @router.post("/encode", status_code=status.HTTP_201_CREATED)
 def encode(link: link_schema.Link, db : Session = Depends(get_db)):
     return encode_link(link, db)
+
+# To get long link
+@router.post("/long", status_code=status.HTTP_200_OK)
+def long_link( short_link: link_schema.ShortLink, db : Session = Depends(get_db)):
+    return get_long_link(short_link, db)
